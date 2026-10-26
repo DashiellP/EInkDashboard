@@ -1,0 +1,26 @@
+
+services:
+  postgres:
+    image: postgres:18
+    container_name: dashiellboard-postgres
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_USER: plant_user
+      POSTGRES_PASSWORD: dev_password
+      POSTGRES_DB: plants
+
+    ports:
+      - "127.0.0.1:5432:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U plant_user -d plants"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:

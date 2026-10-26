@@ -1,0 +1,132 @@
+body {{
+    margin: 0;
+    padding: 0;
+    color: #d1d1d1;
+    -webkit-text-stroke: 2px black;
+    font-weight: bold;
+    font-family: Arial, sans serif;
+}}
+
+.gradient-text {{
+    background-image: linear-gradient({text_top_color}, {text_bottom_color});
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 2px {stroke_color};
+}}
+
+.background {{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}}
+
+.overlay-container {{
+    position: absolute;
+    inset: 5%;
+    padding: 0;
+    margin: 0;
+}}
+
+.widget-background {{
+    background: white;
+    border: 2px gray;
+    border-radius: 1em;
+    width: 100%;
+    height: 100%;
+    opacity: 20%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}}
+
+.datetime-container {{
+    z-index: 1;
+    justify: right;
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    text-align: right;
+    padding: 1%;
+    width: 80%;
+    text-shadow: 
+        -2px -2px 0 {stroke_color},  
+        2px -2px 0 {stroke_color},
+        -2px  2px 0 {stroke_color},
+        2px  2px 0 {stroke_color};
+}}
+
+.time-contents {{
+    font-size: 12vh;
+    color: {text_top_color};
+    margin: 0;
+    height: 12vh;
+}}
+
+.date-contents {{
+    font-size: 7vh;
+    color: {text_bottom_color};
+    margin: 0;
+    height: 7vh;
+}}
+
+.weather-container {{
+    justify: left;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    padding: 1%;
+    text-shadow: 
+        -2px -2px 0 {stroke_color},  
+        2px -2px 0 {stroke_color},
+        -2px  2px 0 {stroke_color},
+        2px  2px 0 {stroke_color};
+}}
+
+.temp-contents {{
+    font-size: 12vh;
+    color: {text_top_color};
+    margin: 0;
+}}
+
+.weather-contents {{
+    font-size: 7vh;
+    color: {text_bottom_color};
+    margin: 0;
+    padding: 0;
+}}
+
+.icon-container {{
+    z-index: 1;
+    display: inline-block;
+    height: 10vh;
+    width: 10vh;
+    margin: 0;
+    padding: 0;
+    padding-left: 1%;
+}}
+
+.icon-container>img {{
+    height: 100%;
+    width: 100%;
+}}
+
+.weather-text-container {{
+    z-index: 1;
+    justify: left;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    text-align: left;
+}}
+
+.background {{
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}}

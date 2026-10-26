@@ -20,7 +20,7 @@ class App():
     _screen_dimensions = (0,0)
 
     _last_update = 0
-    _time_between_updates = 600
+    _time_between_updates = 300
     
     def __init__(self):
         self.state_manager = StateManager()
@@ -46,11 +46,11 @@ class App():
     def _handle_button_press(self, button_index):
         match button_index:
             case 0:
-                self._update_image(ImageGenerators.RandomScreenshotGenerator())
+                self._update_image(ImageGenerators.RandomScreenshotGenerator(self._screen_dimensions))
             case 1:
-                self._update_image(ImageGenerators.WeatherGenerator())
+                self._update_image(ImageGenerators.WeatherGenerator(self._screen_dimensions))
             case 2:
-                self._update_image(ImageGenerators.TestPageGenerator())
+                self._update_image(ImageGenerators.QRCodeGenerator())
             case 3:
                 self._update_image(ImageGenerators.CalendarGenerator(Services.CalendarService()))
 
@@ -77,7 +77,7 @@ class App():
                 current_datetime = datetime.datetime.now()
                 if (current_datetime.timestamp() >= self._last_update + self._time_between_updates):
                     self._last_update = current_datetime.timestamp()
-                    self._update_image(ImageGenerators.RandomScreenshotGenerator())
+                    self._update_image(ImageGenerators.WeatherGenerator(self._screen_dimensions))
                 sleep(10)
                 
         except Exception as e:

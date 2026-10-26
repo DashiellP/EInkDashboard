@@ -12,6 +12,7 @@ class DisplayDriver():
         self.state_manager = StateManager()
         self.state_manager.set_state_to_working()
         self._display = inky.auto(ask_user=True, verbose=True)
+        self._display.speed = self._display.MEDIUM
         self.state_manager.set_state_to_idle()
     
     def set_image(self, image, saturation=0.5):

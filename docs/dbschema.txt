@@ -1,0 +1,39 @@
+Table plants {
+  id integer [pk]
+  name varchar(255) [not null, unique]
+  image_path varchar(1024)
+  created_at timestamptz [not null, default: `now()`]
+  deleted_at timestamptz [null]
+}
+
+Table plant_tasks {
+  id integer [pk]
+  name varchar(255) [not null, unique]
+}
+
+Table plant_task_schedules {
+  id integer [pk]
+  plant_id integer [not null, ref: > plants.id]
+  task_id integer [not null, ref: > plant_tasks.id]
+  frequency_days integer [not null, check: `frequency_days > 0`]
+  created_at timestamptz [not null, default: `now()`]
+  deleted_at timestamptz [null]
+  started_at timestamptz [not null, default: `now()`]
+  stopped_at timestamptz [null]
+
+  indexes {
+    (plant_id, task_id) [unique] // WHERE stopped_at IS NULL
+  }
+}
+
+Table plant_task_completion_history {
+  id integer [pk]
+  plant_id integer [not null, ref: > plants.id]
+  task_id integer [not null, ref: > plant_tasks.id]
+  completed_at timestamptz [not null, default: `now()`]
+  data jsonb
+
+  indexes {
+    (plant_id, task_id, completed_at) [name: "idx_plant_history_task_time"] // time DESC
+  }
+}

@@ -1,0 +1,33 @@
+<html>
+<head>
+</head>
+<body>
+    <img class="background" src="{background_url}">
+    <div class="overlay-container">
+        <div class="weather-container">
+            <div class="weather-text-container">
+                <div class="temp-contents">
+                    {temperature}°F
+                </div>
+                <div class="weather-contents">
+                    {weather_type}
+                    <div class="icon-container">
+                        <img src="{weather_icon}">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="datetime-container">
+            <div class="time-contents">
+                {formatted_time}
+            </div>
+            <div class="date-contents">
+                {formatted_date}
+            </div>
+        </div>
+    </div>
+</body>
+<style>
+
+</style>
+</html>

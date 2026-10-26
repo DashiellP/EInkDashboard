@@ -9,4 +9,6 @@ class Config():
         self.ICLOUD_PASSWORD = os.getenv("ICLOUD_PASSWORD")
         self.SERVER_URL = os.getenv("SERVER_URL")
 
+        self.OPEN_WEATHER_MAP_API_KEY = os.getenv("OPEN_WEATHER_MAP_API_KEY")
+
 config = Config()

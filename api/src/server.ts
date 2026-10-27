@@ -1,12 +1,19 @@
 
 import { buildApp } from "./app.js";
+import { loadConfig } from "./config.js"
+import { pool } from "./db/pool.js"
 
+const config = loadConfig();
 const app = buildApp();
+
+app.addHook("onClose", async () => {
+  await pool.end();
+});
 
 try {
   await app.listen({
-    port: 3000,
-    host: "127.0.0.1"
+    port: config.port,
+    host: config.host
   });
 } catch (error) {
   app.log.error(error);

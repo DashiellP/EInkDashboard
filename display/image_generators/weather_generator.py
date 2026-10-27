@@ -22,9 +22,9 @@ class WeatherGenerator(ImageGenerator):
 
     text_fill_colors = {
         0: "#19FFF3",
-        5: "#ff9100",
+        6: "#ff9100",
         10: "#ff9100",
-        15: "#ff9100",
+        18: "#f47200",
         20: "#19FFF3",
     }
 
@@ -32,7 +32,7 @@ class WeatherGenerator(ImageGenerator):
         0: "#828282",
         5: "#000000",
         10: "#000000",
-        15: "#000000",
+        18: "#000000",
         20: "#828282",
     }
 

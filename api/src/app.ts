@@ -1,5 +1,5 @@
 import Fastify from "fastify";
-import { plantRoutes } from "./routes/plants.routes.js";
+import { plantRoutes } from "./plants/plants.routes.js";
 
 export function buildApp() {
   const app = Fastify({

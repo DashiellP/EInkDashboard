@@ -30,7 +30,7 @@ class WeatherGenerator(ImageGenerator):
 
     text_stroke_colors = {
         0: "#828282",
-        5: "#000000",
+        6: "#000000",
         10: "#000000",
         18: "#000000",
         20: "#828282",

@@ -1,7 +1,9 @@
 import type { FastifyPluginAsync, FastifyRequest } from "fastify";
 import { randomUUID } from "node:crypto";
 import { waitForDebugger } from "node:inspector";
-import { pool } from "../db/pool.js"
+import { pool } from "../db/pool.js";
+
+import { plantService } from "./plants.service.js";
 
 export const plantRoutes: FastifyPluginAsync =
     async (fastify) => {
@@ -12,8 +14,8 @@ export const plantRoutes: FastifyPluginAsync =
         });
 
         fastify.get<{ Params: { id: number } }>("/:id", async (request, reply) => {
-            const result = await pool.query("SELECT * FROM plants WHERE id=$1;", [request.params.id]);
-            return reply.code(201).send(result.rows);
+            const result = await plantService.getPlant(request.params.id);
+            return reply.code(201).send(result);
         });
 
         fastify.post<{ Body: { name: string } }>(
@@ -36,12 +38,9 @@ export const plantRoutes: FastifyPluginAsync =
             },
             async (request, reply) => {
 
-                const result = await pool.query(
-                    "INSERT INTO plants (name) VALUES ($1) RETURNING *;",
-                    [request.body.name]
-                );
+                const result = await plantService.addPlant(request.body.name, "");
 
-                return reply.code(201).send(result.rows[0]);
+                return reply.code(201).send(result);
             }
         );
     };

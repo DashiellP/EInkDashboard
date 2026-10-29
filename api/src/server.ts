@@ -4,7 +4,7 @@ import { loadConfig } from "./config.js"
 import { pool } from "./db/pool.js"
 
 const config = loadConfig();
-const app = buildApp();
+const app = await buildApp();
 
 app.addHook("onClose", async () => {
   await pool.end();

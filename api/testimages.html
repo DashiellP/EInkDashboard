@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InkHub Image Upload Test</title>
+</head>
+<body>
+  <h1>Upload Plant Image</h1>
+
+  <form id="upload-form">
+    <label for="plant-name">Plant Name:</label>
+    <input
+      id="plant-name"
+      required
+    />
+
+    <br /><br />
+
+    <label for="image">Image:</label>
+    <input
+      id="image"
+      type="file"
+      accept="image/jpeg,image/png,image/webp"
+      required
+    />
+
+    <br /><br />
+
+    <button type="submit">Upload Image</button>
+  </form>
+
+  <h2>Response</h2>
+  <pre id="result"></pre>
+
+  <script>
+    const form = document.getElementById("upload-form");
+    const result = document.getElementById("result");
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const plantName = document.getElementById("plant-name").value;
+      const file = document.getElementById("image").files[0];
+
+      const formData = new FormData();
+      formData.append("file", file);
+
+      result.textContent = "Uploading...";
+
+      try {
+        const response = await createPlantWithImage(
+          plantName,
+          file
+        );
+
+        const data = await response.json();
+
+        result.textContent = JSON.stringify(
+          {
+            status: response.status,
+            data
+          },
+          null,
+          2
+        );
+      } catch (error) {
+        result.textContent = `Error: ${error.message}`;
+      }
+    });
+
+
+  async function createPlantWithImage(
+    name,
+    image
+  ) {
+    // Step 1: Create the database record
+    const createResponse = await fetch("http://localhost:3000/v1/plants", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ name })
+    });
+
+    if (!createResponse.ok) {
+      result.textContent = createResponse;
+    }
+
+    const plant = await createResponse.json();
+
+    // Step 2: Upload the image if one was selected
+    if (image) {
+      const formData = new FormData();
+      formData.append("file", image);
+
+      const uploadResponse = await fetch(
+        `http://localhost:3000/v1/plants/${plant.id}/image`,
+        {
+          method: "PUT",
+          body: formData
+        }
+      );
+
+      if (!uploadResponse.ok) {
+        throw new Error(
+          `Plant ${plant.id} was created, but its image upload failed`
+        );
+      }
+    }
+
+    return plant;
+  }
+
+  </script>
+</body>
+</html>

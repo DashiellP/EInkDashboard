@@ -48,11 +48,13 @@ class App():
         self._button_service.register_button_press(
             1,
             "press",
+            True,
             partial(self._update_image, ImageGenerators.WeatherGenerator(self._screen_dimensions))
         )
         self._button_service.register_button_press(
             3,
             "hold",
+            True,
             self._update_and_restart
         )
         

@@ -11,9 +11,6 @@
                 </div>
                 <div class="weather-contents">
                     {weather_type}
-                    <div class="icon-container">
-                        <img src="{weather_icon}">
-                    </div>
                 </div>
             </div>
         </div>

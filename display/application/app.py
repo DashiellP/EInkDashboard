@@ -5,6 +5,7 @@ from utils.app_state import AppState
 import image_generators as ImageGenerators
 import datetime
 from time import sleep
+import subprocess
 
 class App():
     _led_service : Services.LedService
@@ -41,7 +42,8 @@ class App():
         self._init_event_listeners()
 
     def _init_event_listeners(self):
-        self._button_service.subscribe_to_press(self._handle_button_press)
+        self._button_service.subscribe_to_release(self._handle_button_press)
+        self._button_service.subscribe_to_hold(self._handle_button_hold)
         
     def _handle_button_press(self, button_index):
         match button_index:
@@ -53,6 +55,12 @@ class App():
                 self._update_image(ImageGenerators.QRCodeGenerator())
             case 3:
                 self._update_image(ImageGenerators.CalendarGenerator(Services.CalendarService()))
+
+    def _handle_button_hold(self, button_index):
+        match button_index:
+            case 3:
+                self._led_service.show_ready()
+                subprocess.run(["sudo", "systemctl", "restart", "display.service"], check=True)
 
     def _handle_state_change(self, new_state):
         match new_state:

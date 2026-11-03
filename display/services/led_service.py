@@ -12,6 +12,9 @@ class LedService():
     def show_idle(self):
         self._led_driver.set_led_mode(LedMode.Off())
 
+    def show_listening(self):
+        self._led_driver.set_led_mode(LedMode.On())
+
     def show_working(self):
         self._led_driver.set_led_mode(LedMode.Pulse(fade_in_time=1, fade_out_time=0.33))
 

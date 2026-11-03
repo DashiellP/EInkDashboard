@@ -6,6 +6,7 @@ import image_generators as ImageGenerators
 import datetime
 from time import sleep
 import subprocess
+from functools import partial
 
 class App():
     _led_service : Services.LedService
@@ -42,8 +43,13 @@ class App():
         self._init_event_listeners()
 
     def _init_event_listeners(self):
-        self._button_service.subscribe_to_release(self._handle_button_press)
-        self._button_service.subscribe_to_hold(self._handle_button_hold)
+        # self._button_service.subscribe_to_release(self._handle_button_press)
+        # self._button_service.subscribe_to_hold(self._handle_button_hold)
+        self._button_service.register_button_press(
+            2,
+            "press",
+            partial(self._update_image, ImageGenerators.WeatherGenerator(self._screen_dimensions))
+        )
         
     def _handle_button_press(self, button_index):
         match button_index:

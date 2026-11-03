@@ -59,8 +59,9 @@ class App():
     def _handle_button_hold(self, button_index):
         match button_index:
             case 3:
-                self._led_service.show_ready()
+                self._led_service.show_working()
                 subprocess.run(["git", "pull"], check=True)
+                self._led_service.show_ready()
                 subprocess.run(["sudo", "systemctl", "restart", "display.service"], check=True)
 
     def _handle_state_change(self, new_state):

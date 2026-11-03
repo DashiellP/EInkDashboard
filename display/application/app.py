@@ -60,6 +60,7 @@ class App():
         match button_index:
             case 3:
                 self._led_service.show_ready()
+                subprocess.run(["git", "checkout", "HEAD", "."], check=True)
                 subprocess.run(["sudo", "systemctl", "restart", "display.service"], check=True)
 
     def _handle_state_change(self, new_state):

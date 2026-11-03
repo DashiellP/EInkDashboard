@@ -46,9 +46,14 @@ class App():
         # self._button_service.subscribe_to_release(self._handle_button_press)
         # self._button_service.subscribe_to_hold(self._handle_button_hold)
         self._button_service.register_button_press(
-            2,
+            1,
             "press",
             partial(self._update_image, ImageGenerators.WeatherGenerator(self._screen_dimensions))
+        )
+        self._button_service.register_button_press(
+            3,
+            "hold",
+            self._update_and_restart
         )
         
     def _handle_button_press(self, button_index):
@@ -62,13 +67,11 @@ class App():
             case 3:
                 self._update_image(ImageGenerators.CalendarGenerator(Services.CalendarService()))
 
-    def _handle_button_hold(self, button_index):
-        match button_index:
-            case 3:
-                self._led_service.show_working()
-                subprocess.run(["git", "pull"], check=True)
-                self._led_service.show_ready()
-                subprocess.run(["sudo", "systemctl", "restart", "display.service"], check=True)
+    def _update_and_restart(self):
+        self._led_service.show_working()
+        subprocess.run(["git", "pull"], check=True)
+        self._led_service.show_ready()
+        subprocess.run(["sudo", "systemctl", "restart", "display.service"], check=True)
 
     def _handle_state_change(self, new_state):
         match new_state:

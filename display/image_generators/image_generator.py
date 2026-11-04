@@ -6,6 +6,7 @@ import textwrap
 
 class ImageGenerator():
     _dimensions = None
+    _render_speed = 1
 
     def __init__(self, dimensions=None):
         self._dimensions = dimensions

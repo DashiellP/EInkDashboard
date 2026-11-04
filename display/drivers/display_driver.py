@@ -29,6 +29,17 @@ class DisplayDriver():
             "dimensions": (self._display.width, self._display.height)
         }
 
+    def set_render_speed(self, speed):
+        match speed:
+            case 0:
+                self._display.speed = self._display.NORMAL
+            case 1:
+                self._display.speed = self._display.MEDIUM
+            case 2:
+                self._display.speed = self._display.FAST
+            case _:
+                raise ValueError("Invalid render speed value")
+
     def _resize_image(self, image, max_width, max_height):
         target_width = -1
         target_height = -1

@@ -6,6 +6,8 @@ class QRCodeGenerator(ImageGenerator):
     _qrcode_target = config.SERVER_URL
     _qrcode_size = 21
 
+    _render_speed = 2
+
     def generate(self):
         qr = qrcode.QRCode()
         qr.add_data(self._qrcode_target)

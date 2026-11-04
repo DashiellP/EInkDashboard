@@ -15,7 +15,9 @@ class DisplayService():
         self.state_manager = StateManager()
         self.state_manager.add_child(self._display_driver.state_manager)
 
-    def update_image(self, image):
+    def update_image(self, image_generator):
+        image = image_generator.generate()
+        self._display_driver.set_render_speed(image_generator._render_speed)
         self._display_driver.set_image(image)
 
     DESATURATED_PALETTE = [

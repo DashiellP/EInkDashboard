@@ -31,8 +31,7 @@ class ViewService():
             self.show_error(exception)
 
     def render_view(self):
-        image = self._current_view.generate()
-        self._display_service.update_image(image)
+        self._display_service.update_image(self._current_view)
 
     def show_error(self, exception):
         self.state_manager.set_state_to_working()

@@ -48,28 +48,30 @@ class App():
 
     def _init_views(self):
         self._view_service.set_dimensions(self._screen_dimensions)
+        self._view_service.register_view("randomframe", ImageGenerators.RandomScreenshotGenerator)
         self._view_service.register_view("weather", ImageGenerators.WeatherGenerator)
         self._view_service.register_view("qrcode", ImageGenerators.QRCodeGenerator)
+        self._view_service.register_view("calendar", ImageGenerators.CalendarGenerator)
         
     def _init_event_listeners(self):
         self._button_service.register_button_press(
-            1,
-            "press",
-            True,
-            partial(self._view_service.set_view, "weather")
+            0, "press", True, self._build_view_method("randomframe")
         )
         self._button_service.register_button_press(
-            2,
-            "press",
-            True,
-            partial(self._view_service.set_view, "qrcode")
+            1, "press", True, self._build_view_method("weather")
         )
         self._button_service.register_button_press(
-            3,
-            "hold",
-            True,
-            self._update_and_restart
+            2, "press", True, self._build_view_method("qrcode")
         )
+        self._button_service.register_button_press(
+            3, "press", True, self._build_view_method("calendar")
+        )
+        self._button_service.register_button_press(
+            3, "hold", True, self._update_and_restart
+        )
+
+    def _build_view_method(self, view_name):
+        return partial(self._view_service.set_view, view_name)
 
     def _update_and_restart(self):
         self._led_service.show_working()

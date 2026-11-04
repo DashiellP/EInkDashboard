@@ -12,11 +12,16 @@ from utils import html_to_image, format_view
 class ErrorPageGenerator(ImageGenerator):
 
     _render_speed = 2
+    _exception = None
 
-    def generate(self, exception=None):
-        if (exception is not None):
-            exception_name = type(exception).__name__
-            exception_description = str(exception)
+    def __init__(self, dimensions=None, exception=None):
+        super()
+        self._exception = exception
+
+    def generate(self):
+        if (self.exception is not None):
+            exception_name = type(self.exception).__name__
+            exception_description = str(self.exception)
             exception_traceback = traceback.format_exc()
         else:
             exception_name = "Unknown Error"

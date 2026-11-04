@@ -15,7 +15,7 @@ class ErrorPageGenerator(ImageGenerator):
     _exception = None
 
     def __init__(self, dimensions=None, exception=None):
-        super.__init__(dimensions)
+        super().__init__(dimensions)
         self._exception = exception
 
     def generate(self):

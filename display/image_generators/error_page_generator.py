@@ -19,9 +19,9 @@ class ErrorPageGenerator(ImageGenerator):
         self._exception = exception
 
     def generate(self):
-        if (self.exception is not None):
-            exception_name = type(self.exception).__name__
-            exception_description = str(self.exception)
+        if (self._exception is not None):
+            exception_name = type(self._exception).__name__
+            exception_description = str(self._exception)
             exception_traceback = traceback.format_exc()
         else:
             exception_name = "Unknown Error"

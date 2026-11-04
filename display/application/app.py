@@ -46,8 +46,8 @@ class App():
         self._init_event_listeners()
 
     def _init_views(self):
-        self._view_service.register_view("weather", ImageGenerators.weather_generator)
-        self._view_service.register_view("qrcode", ImageGenerators.qr_code_generator)
+        self._view_service.register_view("weather", ImageGenerators.WeatherGenerator)
+        self._view_service.register_view("qrcode", ImageGenerators.QRCodeGenerator)
 
     def _init_event_listeners(self):
         self._button_service.register_button_press(

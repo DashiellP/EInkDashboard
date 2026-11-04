@@ -11,6 +11,7 @@ from functools import partial
 class App():
     _led_service : Services.LedService
     _display_service : Services.DisplayService
+    _view_service : Services.ViewService
     _button_service : Services.ButtonService
     
     _led_driver : Drivers.LedDriver
@@ -33,6 +34,7 @@ class App():
 
         self._led_service = Services.LedService(self._led_driver)
         self._display_service = Services.DisplayService(self._display_driver)
+        self._view_service = Services.ViewService(self._display_service)
         self._button_service = Services.ButtonService(self._button_driver)
 
         self._screen_dimensions = self._display_driver.get_display_info()["dimensions"]
@@ -42,14 +44,22 @@ class App():
 
         self._init_event_listeners()
 
+    def _init_views(self):
+        self._view_service.register_view("weather", ImageGenerators.weather_generator)
+        self._view_service.register_view("qrcode", ImageGenerators.qr_code_generator)
+
     def _init_event_listeners(self):
-        # self._button_service.subscribe_to_release(self._handle_button_press)
-        # self._button_service.subscribe_to_hold(self._handle_button_hold)
         self._button_service.register_button_press(
             1,
             "press",
             True,
-            partial(self._update_image, ImageGenerators.WeatherGenerator(self._screen_dimensions))
+            partial(self._view_service.set_view, "weather")
+        )
+        self._button_service.register_button_press(
+            2,
+            "press",
+            True,
+            partial(self._view_service.set_view, "qrcode")
         )
         self._button_service.register_button_press(
             3,

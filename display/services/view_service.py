@@ -35,6 +35,6 @@ class ViewService():
         self._display_service.update_image(image)
 
     def show_error(self, exception):
-        self.state_manager.set_state_to_working()
+        self._state_manager.set_state_to_working()
         self._display_service.update_image(ErrorPageGenerator(self._screen_dimensions).generate(exception))
-        self.state_manager.set_state_to_idle()
+        self._state_manager.set_state_to_idle()

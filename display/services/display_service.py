@@ -18,6 +18,7 @@ class DisplayService():
     def update_image(self, image_generator):
         image = image_generator.generate()
         self._display_driver.set_render_speed(image_generator._render_speed)
+        self._display_driver.set_border_color(image_generator._border_color)
         self._display_driver.set_image(image)
 
     DESATURATED_PALETTE = [

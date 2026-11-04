@@ -7,6 +7,7 @@ import textwrap
 class ImageGenerator():
     _dimensions = None
     _render_speed = 1
+    _border_color = "WHITE"
 
     def __init__(self, dimensions=None):
         self._dimensions = dimensions

@@ -40,6 +40,9 @@ class DisplayDriver():
             case _:
                 raise ValueError("Invalid render speed value")
 
+    def set_border_color(self, color):
+        self._display.set_border(self._display[color])
+
     def _resize_image(self, image, max_width, max_height):
         target_width = -1
         target_height = -1

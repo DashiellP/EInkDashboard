@@ -12,6 +12,8 @@ from utils import html_to_image, format_view
 class ErrorPageGenerator(ImageGenerator):
 
     _render_speed = 2
+    _border_color = "RED"
+
     _exception = None
 
     def __init__(self, dimensions=None, exception=None):

@@ -34,12 +34,13 @@ class App():
 
         self._led_service = Services.LedService(self._led_driver)
         self._display_service = Services.DisplayService(self._display_driver)
-        self._view_service = Services.ViewService(self._display_service, self.state_manager)
+        self._view_service = Services.ViewService(self._display_service)
         self._button_service = Services.ButtonService(self._button_driver)
 
         self._screen_dimensions = self._display_driver.get_display_info()["dimensions"]
 
         self.state_manager.add_child(self._display_service.state_manager)
+        self.state_manager.add_child(self._view_service.state_manager)
         self.state_manager.subscribe_to_state_change(self._handle_state_change)
 
         self._init_views()
@@ -49,7 +50,7 @@ class App():
         self._view_service.set_dimensions(self._screen_dimensions)
         self._view_service.register_view("weather", ImageGenerators.WeatherGenerator)
         self._view_service.register_view("qrcode", ImageGenerators.QRCodeGenerator)
-
+        
     def _init_event_listeners(self):
         self._button_service.register_button_press(
             1,
@@ -70,17 +71,6 @@ class App():
             self._update_and_restart
         )
         
-    def _handle_button_press(self, button_index):
-        match button_index:
-            case 0:
-                self._update_image(ImageGenerators.RandomScreenshotGenerator(self._screen_dimensions))
-            case 1:
-                self._update_image(ImageGenerators.WeatherGenerator(self._screen_dimensions))
-            case 2:
-                self._update_image(ImageGenerators.QRCodeGenerator())
-            case 3:
-                self._update_image(ImageGenerators.CalendarGenerator(Services.CalendarService()))
-
     def _update_and_restart(self):
         self._led_service.show_working()
         subprocess.run(["git", "pull"], check=True)
@@ -110,7 +100,7 @@ class App():
                 current_datetime = datetime.datetime.now()
                 if (current_datetime.timestamp() >= self._last_update + self._time_between_updates):
                     self._last_update = current_datetime.timestamp()
-                    self._update_image(ImageGenerators.WeatherGenerator(self._screen_dimensions))
+                    self._view_service.set_view("weather")
                 sleep(10)
                 
         except Exception as e:

@@ -46,6 +46,7 @@ class App():
         self._init_event_listeners()
 
     def _init_views(self):
+        self._view_service.set_dimensions(self._screen_dimensions)
         self._view_service.register_view("weather", ImageGenerators.WeatherGenerator)
         self._view_service.register_view("qrcode", ImageGenerators.QRCodeGenerator)
 

@@ -55,16 +55,16 @@ class App():
         
     def _init_event_listeners(self):
         self._button_service.register_button_press(
-            0, "press", True, self._build_view_method("randomframe")
+            0, "release", True, self._build_view_method("randomframe")
         )
         self._button_service.register_button_press(
-            1, "press", True, self._build_view_method("weather")
+            1, "release", True, self._build_view_method("weather")
         )
         self._button_service.register_button_press(
-            2, "press", True, self._build_view_method("qrcode")
+            2, "release", True, self._build_view_method("qrcode")
         )
         self._button_service.register_button_press(
-            3, "press", True, self._build_view_method("calendar")
+            3, "release", True, self._build_view_method("calendar")
         )
         self._button_service.register_button_press(
             3, "hold", True, self._update_and_restart

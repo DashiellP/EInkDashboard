@@ -10,6 +10,9 @@ from PIL import Image, ImageDraw, ImageFont
 from utils import html_to_image, format_view
 
 class ErrorPageGenerator(ImageGenerator):
+
+    _render_speed = 2
+
     def generate(self, exception=None):
         if (exception is not None):
             exception_name = type(exception).__name__

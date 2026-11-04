@@ -42,6 +42,7 @@ class App():
         self.state_manager.add_child(self._display_service.state_manager)
         self.state_manager.subscribe_to_state_change(self._handle_state_change)
 
+        self._init_views()
         self._init_event_listeners()
 
     def _init_views(self):

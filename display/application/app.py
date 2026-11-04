@@ -34,7 +34,7 @@ class App():
 
         self._led_service = Services.LedService(self._led_driver)
         self._display_service = Services.DisplayService(self._display_driver)
-        self._view_service = Services.ViewService(self._display_service)
+        self._view_service = Services.ViewService(self._display_service, self.state_manager)
         self._button_service = Services.ButtonService(self._button_driver)
 
         self._screen_dimensions = self._display_driver.get_display_info()["dimensions"]

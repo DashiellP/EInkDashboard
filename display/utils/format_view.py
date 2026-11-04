@@ -2,20 +2,24 @@ import base64
 import requests
 from html2pic import Html2Pic
 
+import pymupdf
+from PIL import Image
+from weasyprint import HTML, CSS
+
+from jinja2 import Template
+
 def format_view(view_file_path, values):
     with open(view_file_path, "r", encoding="utf-8") as file:
         content = file.read()
-        return content.format(**values)
+        file.close()
+        template = Template(content)
+        return template.render(**values)
 
 def fetch_image_data(image_url):
     response = requests.get(image_url, timeout=15)
     response.raise_for_status()
     encoded = base64.b64encode(response.content).decode("ascii")
     return "data:image/png;base64," + encoded
-
-import pymupdf
-from PIL import Image
-from weasyprint import HTML, CSS
 
 
 def html_to_image(

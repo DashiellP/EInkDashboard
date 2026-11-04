@@ -2,7 +2,7 @@
 <head>
 </head>
 <body>
-    <img class="background" src="{background_url}">
+    <img class="background" src="{{background_url}}">
     <div class="overlay-container">
         <div class="weather-container">
             <div class="weather-text-container">

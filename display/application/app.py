@@ -70,7 +70,7 @@ class App():
             True,
             self._update_and_restart
         )
-        
+
     def _update_and_restart(self):
         self._led_service.show_working()
         subprocess.run(["git", "pull"], check=True)
@@ -84,16 +84,6 @@ class App():
             case AppState.IDLE:
                 self._led_service.show_ready()
 
-    def _update_image(self, image_generator):
-        try:
-            self.state_manager.set_state_to_working()
-            self._display_service.update_image(image_generator.generate())
-            self.state_manager.set_state_to_idle()
-        except Exception as exception:
-            self.state_manager.set_state_to_working()
-            self._display_service.update_image(ImageGenerators.ErrorPageGenerator(self._screen_dimensions).generate(exception))
-            self.state_manager.set_state_to_idle()
-
     def run(self):
         try:
             while True:
@@ -101,7 +91,7 @@ class App():
                 if (current_datetime.timestamp() >= self._last_update + self._time_between_updates):
                     self._last_update = current_datetime.timestamp()
                     self._view_service.set_view("weather")
-                sleep(10)
+                sleep(1)
                 
         except Exception as e:
             exception_name = type(e).__name__

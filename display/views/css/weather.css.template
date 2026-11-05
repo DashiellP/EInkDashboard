@@ -41,7 +41,7 @@ body {
 }
 
 .datetime-container {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.6);
     border: 1px solid {{text_top_color}};
     border-radius: 1em;
     z-index: 1;
@@ -54,7 +54,7 @@ body {
     justify-content: space-between;
     text-align: right;
     padding: 1.5em;
-    width: 75%;
+    width: 60%;
     text-shadow: 
         -2px -2px 0 {{stroke_color}},  
         2px -2px 0 {{stroke_color}},
@@ -77,7 +77,7 @@ body {
 }
 
 .weather-container {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.6);
     border: 1px solid {{text_top_color}};
     border-radius: 1em;
     justify: left;
@@ -86,6 +86,7 @@ body {
     top: 0;
     display: flex;
     padding: 1.5em;
+    width: 15%;
     text-shadow: 
         -2px -2px 0 {{stroke_color}},  
         2px -2px 0 {{stroke_color}},

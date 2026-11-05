@@ -51,6 +51,7 @@ body {
     top: 0;
     display: flex;
     flex-flow: column wrap;
+    justify-content: space-between;
     text-align: right;
     padding: 1.5em;
     text-shadow: 
@@ -64,6 +65,7 @@ body {
     font-size: 12vh;
     color: {{text_top_color}};
     margin: 0;
+    padding: 0;
 }
 
 .date-contents {

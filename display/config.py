@@ -10,8 +10,8 @@ class Config():
         self.SERVER_URL = os.getenv("SERVER_URL")
 
         self.OPEN_WEATHER_MAP_API_KEY = os.getenv("OPEN_WEATHER_MAP_API_KEY")
-        self.OPEN_WEATHER_MAP_API_KEY = os.getenv("WEATHER_LAT")
-        self.OPEN_WEATHER_MAP_API_KEY = os.getenv("WEATHER_LON")
-        self.OPEN_WEATHER_MAP_API_KEY = os.getenv("WEATHER_BACKGROUND_URI")
+        self.WEATHER_LAT = os.getenv("WEATHER_LAT")
+        self.WEATHER_LON = os.getenv("WEATHER_LON")
+        self.WEATHER_BACKGROUND_URI = os.getenv("WEATHER_BACKGROUND_URI")
 
 config = Config()

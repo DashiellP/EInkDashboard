@@ -42,7 +42,7 @@ class WeatherGenerator(ImageGenerator):
         now = datetime.now()
         hour = (now.hour - 1) % 12 + 1
         formatted_time = str(hour) + now.strftime(":%M %p")
-        formatted_date = now.strftime("%A, %B %-d, %Y")
+        formatted_date = now.strftime("%A, %m/%-d/%Y")
         # background_image = youtube_live_frame("https://www.youtube.com/watch?v=RGYlFjV-dtc")
         # image_buffer = BytesIO()
         # background_image.save(image_buffer, format="png")

@@ -41,8 +41,8 @@ body {
 }
 
 .datetime-container {
-    background-color: rgba(255, 255, 255, 0.2);
-    border: 2px solid {{text_top_color}};
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid {{text_top_color}};
     border-radius: 1em;
     z-index: 1;
     justify: right;
@@ -77,8 +77,8 @@ body {
 }
 
 .weather-container {
-    background-color: rgba(255, 255, 255, 0.2);
-    border: 2px solid {{text_top_color}};
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid {{text_top_color}};
     border-radius: 1em;
     justify: left;
     position: absolute;

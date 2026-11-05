@@ -50,6 +50,7 @@ body {
     right: 0;
     top: 0;
     display: flex;
+    flex-flow: column wrap;
     text-align: right;
     padding: 1.5em;
     text-shadow: 

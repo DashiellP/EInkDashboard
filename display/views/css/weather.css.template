@@ -66,6 +66,7 @@ body {
     color: {{text_top_color}};
     margin: 0;
     padding: 0;
+    height: 12vh;
 }
 
 .date-contents {
@@ -73,6 +74,7 @@ body {
     color: {{text_bottom_color}};
     margin: 0;
     padding: 0;
+    height: 7vh;
 }
 
 .weather-container {
@@ -96,6 +98,7 @@ body {
     font-size: 12vh;
     color: {{text_top_color}};
     margin: 0;
+    height: 12vh;
 }
 
 .weather-contents {
@@ -103,6 +106,7 @@ body {
     color: {{text_bottom_color}};
     margin: 0;
     padding: 0;
+    height: 7vh;
 }
 
 .icon-container {

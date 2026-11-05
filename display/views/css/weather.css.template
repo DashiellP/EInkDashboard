@@ -50,11 +50,8 @@ body {
     right: 0;
     top: 0;
     display: flex;
-    flex-flow: column wrap;
-    justify-content: space-between;
     text-align: right;
     padding: 1.5em;
-    width: 66%;
     text-shadow: 
         -2px -2px 0 {{stroke_color}},  
         2px -2px 0 {{stroke_color}},

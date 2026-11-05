@@ -18,7 +18,7 @@ class WeatherGenerator(ImageGenerator):
     #     f"snapshots/hb-innocean/latest_1920x.jpg?t={int(time())}"
     # )
 
-    background_url = f"{config.WEATHER_BACKGROUND_URI}?{int(time())}"
+    background_url = f"https://www.nps.gov/featurecontent/ard/webcams/images/sekilarge.jpg?{int(time())}"
 
     text_fill_colors = {
         0: "#19FFF3",

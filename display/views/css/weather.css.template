@@ -54,7 +54,7 @@ body {
     justify-content: space-between;
     text-align: right;
     padding: 1.5em;
-    width: 60%;
+    width: 66%;
     text-shadow: 
         -2px -2px 0 {{stroke_color}},  
         2px -2px 0 {{stroke_color}},
@@ -66,14 +66,12 @@ body {
     font-size: 12vh;
     color: {{text_top_color}};
     margin: 0;
-    height: 12vh;
 }
 
 .date-contents {
     font-size: 7vh;
     color: {{text_bottom_color}};
     margin: 0;
-    height: 7vh;
 }
 
 .weather-container {
@@ -86,7 +84,7 @@ body {
     top: 0;
     display: flex;
     padding: 1.5em;
-    width: 15%;
+    width: 20%;
     text-shadow: 
         -2px -2px 0 {{stroke_color}},  
         2px -2px 0 {{stroke_color}},

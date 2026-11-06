@@ -18,14 +18,14 @@ class WeatherGenerator(ImageGenerator):
     #     f"snapshots/hb-innocean/latest_1920x.jpg?t={int(time())}"
     # )
 
-    background_url = f"https://www.nps.gov/featurecontent/ard/webcams/images/sekilarge.jpg?{int(time())}"
+    background_url = f"https://cdns.abclocal.go.com/three/kabc/webcam/web2-1.jpg?w=630&r=16%3A9&t={int(time())}"
 
     text_fill_colors = {
-        0: "#19FFF3",
-        6: "#ff9100",
+        0: "#1979FF",
+        6: "#ff009d",
         10: "#ff9100",
-        18: "#f47200",
-        20: "#19FFF3",
+        18: "#f40066",
+        20: "#B219FF",
     }
 
     text_stroke_colors = {

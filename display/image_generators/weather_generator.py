@@ -21,11 +21,11 @@ class WeatherGenerator(ImageGenerator):
     background_url = f"https://cdns.abclocal.go.com/three/kabc/webcam/web2-1.jpg?w=630&r=16%3A9&t={int(time())}"
 
     text_fill_colors = {
-        0: "#3819FF",
+        0: "#120088",
         6: "#72002f",
         10: "#ff9100",
         18: "#72002f",
-        20: "#B219FF",
+        20: "#5C008B",
     }
 
     text_stroke_colors = {

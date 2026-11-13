@@ -22,4 +22,4 @@ class Navigation():
         self._current_applet = Applet({}, AppletContext())
 
     def is_home(self):
-        return self._current_applet is not None
+        return self._current_applet is None

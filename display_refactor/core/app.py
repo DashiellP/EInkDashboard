@@ -17,7 +17,7 @@ class App():
         self._button_driver.subscribe_to_input(self._handle_button_press)
 
     def _handle_button_press(self, button_event: Drivers.button_driver.ButtonEvent):
-        print(button_event)
+        self._navigation.handle_button_event(button_event)
 
     def run(self):
         while True:

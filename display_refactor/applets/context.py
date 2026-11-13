@@ -1,2 +1,4 @@
+from typing import Callable
+
 class AppletContext():
-    request_redraw: callable[[], None]
+    request_redraw: Callable[[], None]

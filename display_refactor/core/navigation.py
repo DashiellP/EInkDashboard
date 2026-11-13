@@ -7,6 +7,7 @@ class Navigation():
 
     def handle_button_event(self, button_event):
         print(button_event)
+        print(self._current_applet)
         if (not self.is_home() and button_event.index == self.HOME_BUTTON and button_event.kind == ButtonEventKind.HOLD):
             self.go_home()
         elif (self.is_home() and button_event.kind == ButtonEventKind.TAP):

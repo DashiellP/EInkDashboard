@@ -1,5 +1,5 @@
 from applets.base import Applet, AppletContext
-from applets.weather import WeatherApplet
+from applets.weather.applet import WeatherApplet
 from drivers.button_driver import ButtonEventKind
 
 class Navigation():

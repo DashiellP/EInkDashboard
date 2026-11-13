@@ -1,4 +1,5 @@
-from applets.base import Applet
+from applets.base import Applet, AppletContext
+from drivers.button_driver import ButtonEventKind
 
 class Navigation():
     _current_applet: Applet | None = None
@@ -11,9 +12,11 @@ class Navigation():
 
     def go_home(self):
         print("home")
+        self._current_applet = None
 
     def open_applet(self, applet_id: str):
         print(applet_id)
+        self._current_applet = Applet({}, AppletContext())
 
     def is_home(self):
         return self._current_applet is not None

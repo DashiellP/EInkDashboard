@@ -43,9 +43,9 @@ class ButtonDriver():
     
     def _handle_button_hold(self, button):
         button_index = self._button_pins[button.pin.number]
-        self._on_input.send(ButtonEvent(ButtonEventKind.HOLD, button_index, button.held_time))
+        self._on_input.send(ButtonEvent(ButtonEventKind.HOLD, button_index, button.active_time))
 
     def _handle_button_release(self, button):
         button_index = self._button_pins[button.pin.number]
         if not self.buttons[button_index].is_held:
-            self._on_input.send(ButtonEvent(ButtonEventKind.TAP, button_index, button.held_time))
+            self._on_input.send(ButtonEvent(ButtonEventKind.TAP, button_index, button.active_time))

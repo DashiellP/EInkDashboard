@@ -25,6 +25,7 @@ class ButtonDriver():
     _button_hold_time = 2
 
     buttons = []
+    button_hold_states = [False, False, False, False]
 
     _on_input = signal("on-input")
 
@@ -43,9 +44,11 @@ class ButtonDriver():
     
     def _handle_button_hold(self, button):
         button_index = self._button_pins[button.pin.number]
+        self.button_hold_states[button_index] = True
         self._on_input.send(ButtonEvent(ButtonEventKind.HOLD, button_index, button.active_time))
 
     def _handle_button_release(self, button):
         button_index = self._button_pins[button.pin.number]
-        if self.buttons[button_index].active_time is None:
+        if not self.button_hold_states[button_index]:
             self._on_input.send(ButtonEvent(ButtonEventKind.TAP, button_index, button.active_time))
+        self.button_hold_states[button_index] = False

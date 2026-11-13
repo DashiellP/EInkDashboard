@@ -1,5 +1,5 @@
 import drivers as Drivers
-from navigation import Navigation
+from core.navigation import Navigation
 
 class App():
     _led_driver : Drivers.LedDriver

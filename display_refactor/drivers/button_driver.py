@@ -22,7 +22,7 @@ class ButtonDriver():
     }
 
     _button_bounce_time = 0.1
-    _button_hold_time = 2
+    _button_hold_time = 1
 
     buttons = []
     button_hold_states = [False, False, False, False]

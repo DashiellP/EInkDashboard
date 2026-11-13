@@ -1,4 +1,4 @@
-from application import App
+from display_refactor.core.app import App
 
 if __name__ == "__main__":
     app = App()

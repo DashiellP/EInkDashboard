@@ -12,6 +12,7 @@ class View:
 class Applet(ABC):
     id: str
     name: str
+    context: AppletContext
 
     def __init__(self, config: dict, context: AppletContext):
         self.config = config

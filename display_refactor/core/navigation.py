@@ -28,3 +28,8 @@ class Navigation():
 
     def is_home(self):
         return self._current_applet is None
+
+    def get_current_view(self):
+        if self._current_applet is not None:
+            return self._current_applet.build_view()
+        

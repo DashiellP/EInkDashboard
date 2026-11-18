@@ -1,11 +1,29 @@
 from applets.base import Applet, View
-from datetime import datetime
+from datetime import datetime, time
 from core.config import config
 
 
 class WeatherApplet(Applet):
     id = "weather"
     name = "Weather"
+
+    background_url = f"https://cdns.abclocal.go.com/three/kabc/webcam/web2-1.jpg?w=630&r=16%3A9&t={int(time())}"
+
+    text_fill_colors = {
+        0: "#120088",
+        6: "#72002f",
+        10: "#ff9100",
+        18: "#72002f",
+        20: "#5C008B",
+    }
+
+    text_stroke_colors = {
+        0: "#424242",
+        6: "#FFFFFF",
+        10: "#FFFFFF",
+        18: "#828282",
+        20: "#828282",
+    }
     
     def on_start(self) -> None:
         self.context.request_redraw()
@@ -42,32 +60,6 @@ class WeatherApplet(Applet):
 
     def fetch_data(self):
         pass
-
-    
-    _screenshot_endpoint = config.SERVER_URL + "node/weather?key=" + config.SECRET_KEY
-
-    # background_url = (
-    #     "https://cdn.pixelcaster.com/public.pixelcaster.com/"
-    #     f"snapshots/hb-innocean/latest_1920x.jpg?t={int(time())}"
-    # )
-
-    background_url = f"https://cdns.abclocal.go.com/three/kabc/webcam/web2-1.jpg?w=630&r=16%3A9&t={int(time())}"
-
-    text_fill_colors = {
-        0: "#120088",
-        6: "#72002f",
-        10: "#ff9100",
-        18: "#72002f",
-        20: "#5C008B",
-    }
-
-    text_stroke_colors = {
-        0: "#424242",
-        6: "#FFFFFF",
-        10: "#FFFFFF",
-        18: "#828282",
-        20: "#828282",
-    }
 
     def get_weather_data(self, api_key):
         url = "https://api.openweathermap.org/data/2.5/weather"

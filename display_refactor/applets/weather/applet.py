@@ -9,7 +9,7 @@ class WeatherApplet(Applet):
         self.context.request_redraw()
 
     def build_view(self):
-        template = self.load_template_file("templates/full.html")
+        template = self.load_template_file("applets/weather/templates/full.html")
         context = {"test_value": "this is a test"}
         return View(
             template,

@@ -1,5 +1,5 @@
 from applets.base import Applet, View
-from datetime import datetime, time
+from datetime import datetime
 from core.config import config
 
 
@@ -7,7 +7,7 @@ class WeatherApplet(Applet):
     id = "weather"
     name = "Weather"
 
-    background_url = f"https://cdns.abclocal.go.com/three/kabc/webcam/web2-1.jpg?w=630&r=16%3A9&t={int(time())}"
+    background_url = f"https://cdns.abclocal.go.com/three/kabc/webcam/web2-1.jpg?w=630&r=16%3A9&t={datetime.now}"
 
     text_fill_colors = {
         0: "#120088",

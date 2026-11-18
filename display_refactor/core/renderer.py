@@ -47,8 +47,6 @@ class Renderer():
                 width: {width}px;
                 height: {height}px;
             }}
-
-            {css}
         """
 
         pdf_bytes = HTML(

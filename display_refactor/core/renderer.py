@@ -17,14 +17,18 @@ class Renderer():
         self._screen_dimensions = self._display_driver.get_display_info()["dimensions"]
 
     def render_image(self, image: Image):
+        print("RENDERING IMAGE")
         self._display_driver.set_image(image)
 
     def render_view(self, view):
+        print("RENDERING VIEW")
         formatted_template = self.format_html_template(view.template, view.context)
         image = self.render_html_template(formatted_template)
         self.render_image(image)
 
     def format_html_template(self, template: str, content):
+        print("RENDERING TEMPLATE")
+        print(template)
         template = Template(template)
         return template.render(**content)
 

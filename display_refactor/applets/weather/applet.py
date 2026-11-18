@@ -31,7 +31,7 @@ class WeatherApplet(Applet):
         self.current_view = self.build_view()
         self.context.request_redraw()
 
-    def on_button(self): 
+    def on_button(self, button_event): 
         self.current_view = self.build_view()
         self.context.request_redraw()
 

@@ -32,7 +32,7 @@ class Applet(ABC):
     def on_stop(self) -> None:
         pass
 
-    def on_button(self, press_event: ButtonEvent) -> None:
+    def on_button(self, button_event: ButtonEvent) -> None:
         pass
 
     def refresh(self) -> None:

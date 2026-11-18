@@ -28,6 +28,11 @@ class WeatherApplet(Applet):
     }
     
     def on_start(self) -> None:
+        self.current_view = self.build_view()
+        self.context.request_redraw()
+
+    def on_button(self): 
+        self.current_view = self.build_view()
         self.context.request_redraw()
 
     def build_view(self):
@@ -59,10 +64,7 @@ class WeatherApplet(Applet):
             template,
             context
         )
-
-    def fetch_data(self):
-        pass
-
+    
     def get_weather_data(self, api_key):
         url = "https://api.openweathermap.org/data/2.5/weather"
 

@@ -17,6 +17,8 @@ class Navigation():
             self.go_home()
         elif (self.is_home() and button_event.kind == ButtonEventKind.TAP):
             self.open_applet(f"test_{button_event.index}")
+        else:
+            self._current_applet.on_button(button_event)
 
     def go_home(self):
         print("home")
@@ -36,5 +38,5 @@ class Navigation():
 
     def get_current_view(self):
         if self._current_applet is not None:
-            return self._current_applet.build_view()
+            return self._current_applet.current_view
         

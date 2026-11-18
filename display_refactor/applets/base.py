@@ -14,6 +14,8 @@ class Applet(ABC):
     name: str
     context: AppletContext
 
+    current_view: View = None
+
     def __init__(self, config: dict, context: AppletContext):
         self.config = config
         self.context = context

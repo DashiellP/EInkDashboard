@@ -20,7 +20,9 @@ class Renderer():
         self._display_driver.set_image(image)
 
     def render_view(self, view):
-        pass
+        formatted_template = self.format_html_template(view.template, view.context)
+        image = self.render_html_template(formatted_template)
+        self.render_image(image)
 
     def format_html_template(self, template: str, content):
         template = Template(template)
@@ -46,8 +48,7 @@ class Renderer():
         """
 
         pdf_bytes = HTML(
-            string=html,
-            base_url=base_url,
+            string=template
         ).write_pdf(
             stylesheets=[CSS(string=page_css)]
         )

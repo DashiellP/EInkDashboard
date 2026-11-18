@@ -20,11 +20,16 @@ class Navigation():
 
     def go_home(self):
         print("home")
+        if self._current_applet is not None:
+            self._current_applet.on_stop()
         self._current_applet = None
 
     def open_applet(self, applet_id: str):
+        if self._current_applet is not None:
+            self._current_applet.on_stop()
         print(applet_id)
         self._current_applet = WeatherApplet({}, self._applet_context)
+        self._current_applet.on_start()
 
     def is_home(self):
         return self._current_applet is None

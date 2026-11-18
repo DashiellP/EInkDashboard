@@ -1,5 +1,6 @@
 from applets.base import Applet, View
 from datetime import datetime
+from core.config import config
 
 
 class WeatherApplet(Applet):
